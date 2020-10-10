@@ -6,16 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Tag: Java | Popker-Tech|Life</title>
+  <title>OrderBy字符串排序规则和在InnoDB中的性能优化 | Popker-Tech|Life</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Popker-Tech|Life">
-<meta property="og:url" content="http://example.com/tags/Java/index.html">
+  <meta name="description" content="#OrderBy字符串排序规则和在InnoDB中的性能优化 Order by字符串排序规则对于字符串来讲，排序规则可以在配置文件中my.ini中指定，主要有以下几个种类的排序规则：（1） utf8_general_cs 和 utf8_general_ci （后缀”_cs”或者”_ci”意思是区分大小写和不区分大小写（Case Sensitive &amp; Case Insensitve））（2）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OrderBy字符串排序规则和在InnoDB中的性能优化">
+<meta property="og:url" content="http://example.com/2018/08/05/OrderBy%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8E%92%E5%BA%8F%E8%A7%84%E5%88%99%E5%92%8C%E5%9C%A8InnoDB%E4%B8%AD%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/index.html">
 <meta property="og:site_name" content="Popker-Tech|Life">
+<meta property="og:description" content="#OrderBy字符串排序规则和在InnoDB中的性能优化 Order by字符串排序规则对于字符串来讲，排序规则可以在配置文件中my.ini中指定，主要有以下几个种类的排序规则：（1） utf8_general_cs 和 utf8_general_ci （后缀”_cs”或者”_ci”意思是区分大小写和不区分大小写（Case Sensitive &amp; Case Insensitve））（2）">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-08-05T09:49:48.000Z">
+<meta property="article:modified_time" content="2020-10-10T13:43:50.300Z">
 <meta property="article:author" content="Popker">
+<meta property="article:tag" content="数据库">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Popker-Tech|Life" type="application/atom+xml">
@@ -184,65 +189,168 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-OrderBy字符串排序规则和在InnoDB中的性能优化" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2018/09/04/Java%E5%9F%BA%E7%A1%80-OIO%E7%9A%84%E4%BD%BF%E7%94%A8/" class="archive-article-date">
-        <time datetime="2018-09-04T08:16:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-04</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2018/09/04/Java%E5%9F%BA%E7%A1%80-OIO%E7%9A%84%E4%BD%BF%E7%94%A8/">Java 网络编程基础（一）- IO</a>
-	
+    <h1 class="article-title" itemprop="name">
+      OrderBy字符串排序规则和在InnoDB中的性能优化
     </h1>
   
 
 
-        <div class="article-info info-on-right">
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2018/08/05/OrderBy%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8E%92%E5%BA%8F%E8%A7%84%E5%88%99%E5%92%8C%E5%9C%A8InnoDB%E4%B8%AD%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="archive-article-date">
+        <time datetime="2018-08-05T09:49:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-05</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">431字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">1分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>#OrderBy字符串排序规则和在InnoDB中的性能优化</p>
+<h2 id="Order-by字符串排序规则"><a href="#Order-by字符串排序规则" class="headerlink" title="Order by字符串排序规则"></a>Order by字符串排序规则</h2><p>对于字符串来讲，排序规则可以在配置文件中my.ini中指定，主要有以下几个种类的排序规则：<br>（1） <strong>utf8_general_cs</strong> 和 <strong>utf8_general_ci</strong> （后缀”_cs”或者”_ci”意思是区分大小写和不区分大小写（Case Sensitive &amp; Case Insensitve））<br>（2） <strong>utf8_bin</strong> 规定每个字符串用二进制编码存储，区分大小写，可以直接存储二进制的内容<br>默认采取的utf8_general_ci <strong>不区分大小写</strong>，并且是按照<strong>逐位比较</strong>，如果相同再比较下一位的方法；如果想按照int方法排序，可以<strong>order by varchar+0</strong>。<a id="more"></a></p>
+<h2 id="Order-by性能优化"><a href="#Order-by性能优化" class="headerlink" title="Order by性能优化"></a>Order by性能优化</h2><p>参考 <a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/order-by-optimization.html">MySQL 5.7 Reference Manual::ORDER BY Optimization</a>，假如有(key_part1,key_part2)的索引，在以下两种情况下MySQL会使用索引来避免排序操作：</p>
+<ul>
+<li><p><code>SELECT * FROM t1   ORDER BY key_part1, key_part2;</code><br>如果表项不只是key_part1,key_part2的话，那么MySQL优化器可能（不一定）不会通过索引来排序，因为扫描整个索引并且按照索引去查找出所有的行，花费的时间可能比直接查找出所有行再排序还慢。特别的，如果在InnoDB中，因为其特殊的索引存储结构（见聚簇索引），索引行和主键会存放在索引的B+树中，因此可以通过索引直接返回，极大提升排序速度：<br><code>SELECT pk, key_part1, key_part2 FROM t1   ORDER BY key_part1, key_part2;</code></p>
+</li>
+<li><p><code>SELECT * FROM t1   WHERE key_part1 = constant   ORDER BY key_part2;</code><br>当key_part1是常量时，自然可以先通过key_part1索引找出对应的行，再利用key_part2进行排序（常量用前缀索引去检索，另一部分用来排序）。</p>
+</li>
+</ul>
+
+    
+
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          Popker
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="http://example.com/2018/08/05/OrderBy字符串排序规则和在InnoDB中的性能优化/" title="OrderBy字符串排序规则和在InnoDB中的性能优化" target="_blank">http://example.com/2018/08/05/OrderBy字符串排序规则和在InnoDB中的性能优化/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+    
 
     
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+
+<nav id="article-nav">
+  
+    <a href="/2018/09/03/WEB%E5%BC%80%E5%8F%91%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          WEB开发常见漏洞与解决方案
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/11/17/%E5%88%86%E5%B8%83%E5%BC%8F%E4%B8%80%E8%87%B4%E6%80%A7%E5%8D%8F%E8%AE%AE%EF%BC%881%EF%BC%89-2PC%E4%B8%8E3PC/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">分布式一致性协议（1）- 2PC与3PC</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
           </div>
@@ -283,9 +391,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

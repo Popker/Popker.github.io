@@ -6,17 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Tag: 随笔 | Popker-Tech|Life</title>
+  <title>Java 网络编程基础（一）- IO | Popker-Tech|Life</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Popker-Tech|Life">
-<meta property="og:url" content="http://example.com/tags/%E9%9A%8F%E7%AC%94/index.html">
+  <meta name="description" content="Java学习（一）- IOJava IO(java.io)包的内容Java IO包主要包含了输入和输出到文件、网络流、内存缓冲区等，却不包含开启网络链接的类，但只要打开了一个网络连接，我们就可以用Java IO的InputStream和OutputStream来进行读写操作； Java IO类总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 网络编程基础（一）- IO">
+<meta property="og:url" content="http://example.com/2018/09/04/Java%E5%9F%BA%E7%A1%80-OIO%E7%9A%84%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="Popker-Tech|Life">
+<meta property="og:description" content="Java学习（一）- IOJava IO(java.io)包的内容Java IO包主要包含了输入和输出到文件、网络流、内存缓冲区等，却不包含开启网络链接的类，但只要打开了一个网络连接，我们就可以用Java IO的InputStream和OutputStream来进行读写操作； Java IO类总结">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s1.ax1x.com/2018/09/04/iSoE7V.md.jpg">
+<meta property="article:published_time" content="2018-09-04T08:16:32.000Z">
+<meta property="article:modified_time" content="2020-10-10T13:46:00.430Z">
 <meta property="article:author" content="Popker">
+<meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2018/09/04/iSoE7V.md.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Popker-Tech|Life" type="application/atom+xml">
   
@@ -70,9 +77,17 @@
 			
 				<li><a href="/" >主页</a></li>
 			
+				<li><a href="/tags/%E9%9A%8F%E7%AC%94/" >随笔</a></li>
+			
 				<li><a href="/tags/Java/" >Java</a></li>
 			
-				<li><a href="/tags/%E9%9A%8F%E7%AC%94/" >随笔</a></li>
+				<li><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" >数据库</a></li>
+			
+				<li><a href="/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/" >中间件</a></li>
+			
+				<li><a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/" >分布式</a></li>
+			
+				<li><a href="/tags/%E7%B3%BB%E7%BB%9F%E7%9B%B8%E5%85%B3/" >系统相关</a></li>
 			
 			</ul>
 		</nav>
@@ -128,6 +143,14 @@
 			
 				
 			
+				
+			
+				
+			
+				
+			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -140,11 +163,19 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
+					<li style="width: 14.285714285714286%"><a href="/">主页</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/tags/Java/">Java</a></li>
+					<li style="width: 14.285714285714286%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+					<li style="width: 14.285714285714286%"><a href="/tags/Java/">Java</a></li>
+		        
+					<li style="width: 14.285714285714286%"><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li>
+		        
+					<li style="width: 14.285714285714286%"><a href="/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/">中间件</a></li>
+		        
+					<li style="width: 14.285714285714286%"><a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/">分布式</a></li>
+		        
+					<li style="width: 14.285714285714286%"><a href="/tags/%E7%B3%BB%E7%BB%9F%E7%9B%B8%E5%85%B3/">系统相关</a></li>
 		        
 				</ul>
 			</nav>
@@ -160,65 +191,196 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-Java基础-OIO的使用" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/10/09/hello-world/" class="archive-article-date">
-        <time datetime="2020-10-09T15:26:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-09</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2020/10/09/hello-world/">hello-world</a>
-	
+    <h1 class="article-title" itemprop="name">
+      Java 网络编程基础（一）- IO
     </h1>
   
 
 
-        <div class="article-info info-on-right">
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2018/09/04/Java%E5%9F%BA%E7%A1%80-OIO%E7%9A%84%E4%BD%BF%E7%94%A8/" class="archive-article-date">
+        <time datetime="2018-09-04T08:16:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-04</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">501字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">2分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="Java学习（一）-IO"><a href="#Java学习（一）-IO" class="headerlink" title="Java学习（一）- IO"></a>Java学习（一）- IO</h1><h2 id="Java-IO-java-io-包的内容"><a href="#Java-IO-java-io-包的内容" class="headerlink" title="Java IO(java.io)包的内容"></a>Java IO(java.io)包的内容</h2><p>Java IO包主要包含了输入和输出到文件、网络流、内存缓冲区等，却不包含开启网络链接的类，但只要打开了一个网络连接，我们就可以用Java IO的InputStream和OutputStream来进行读写操作；</p>
+<h2 id="Java-IO类总结"><a href="#Java-IO类总结" class="headerlink" title="Java IO类总结"></a>Java IO类总结</h2><p><img src="https://s1.ax1x.com/2018/09/04/iSoE7V.md.jpg" alt="Java IO类梗概"><a id="more"></a></p>
+<p>如上图所示，Java IO流主要分为字符流和字节流，Reader和Writer等读写是<strong>基于字符</strong>的，InputStream和OutputStream是<strong>基于字节流</strong>的。<br>除此之外，还有一个特殊的类java.io.RandomAccessFile，RandomAccessFile 虽然属于java.io下的类，但它不是InputStream或者OutputStream的子类；它也不同于FileInputStream和FileOutputStream。 </p>
+<p>FileIsnputStream 只能对文件进行读操作，而FileOutputStream 只能对文件进行写操作；RandomAccessFile与输入流和输出流不同之处就是RandomAccessFile可以<strong>访问文件的任意地方</strong>同时支持文件的读和写，并且它支持<strong>随机访问</strong>。RandomAccessFile包含InputStream的三个read方法，也包含OutputStream的三个write方法。同时RandomAccessFile还包含一系列的readXxx和writeXxx方法完成输入输出。 </p>
+<h2 id="Java-IO异常处理"><a href="#Java-IO异常处理" class="headerlink" title="Java IO异常处理"></a>Java IO异常处理</h2><h3 id="Java7之前的Try-Catch-Finally处理风格"><a href="#Java7之前的Try-Catch-Finally处理风格" class="headerlink" title="Java7之前的Try-Catch-Finally处理风格"></a>Java7之前的Try-Catch-Finally处理风格</h3><pre><code>private static void printFile() throws IOException &#123;
+    InputStream input = null;
+
+    try &#123;
+        input = new FileInputStream(&quot;file.txt&quot;);
+
+        int data = input.read();
+        while(data != -1)&#123;
+            System.out.print((char) data);
+            data = input.read();
+        &#125;
+    &#125; finally &#123;
+        if(input != null)&#123;
+            input.close();
+        &#125;
+    &#125;
+&#125;</code></pre>
+<p>看起来非常不简洁，很有可能导致许多批判Java人口中的高度问题。</p>
+<h3 id="Java7后的Try-with-resources"><a href="#Java7后的Try-with-resources" class="headerlink" title="Java7后的Try-with-resources"></a>Java7后的Try-with-resources</h3><pre><code>private static void printFileJava7() throws IOException &#123;
+
+    try(  FileInputStream     input         = new FileInputStream(&quot;file.txt&quot;);
+        BufferedInputStream bufferedInput = new BufferedInputStream(input)
+    ) &#123;
+
+        int data = bufferedInput.read();
+        while(data != -1)&#123;
+            System.out.print((char) data);
+    data = bufferedInput.read();
+        &#125;
+    &#125;
+&#125; </code></pre>
+<p>创建的资源会按照与创建/排列相反的顺去去自动关闭，只要实现了AutoClosable接口的类（需要实现close()方法）都可以使用try-with-resources结构。</p>
+<h2 id="OIO的并发问题"><a href="#OIO的并发问题" class="headerlink" title="OIO的并发问题"></a>OIO的并发问题</h2><p>对于同一个同一个InputStream/OutputStream或者Reader/Writer，不应当有多个线程进行操作,因为无法保证每个线程会读/写到哪里。</p>
+
+    
+
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          Popker
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="http://example.com/2018/09/04/Java基础-OIO的使用/" title="Java 网络编程基础（一）- IO" target="_blank">http://example.com/2018/09/04/Java基础-OIO的使用/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+    
 
     
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+
+<nav id="article-nav">
+  
+    <a href="/2018/09/06/Linux%E4%B8%8B%E7%BA%BF%E7%A8%8B%E3%80%81%E8%BF%9B%E7%A8%8B%E5%92%8C%E5%8D%8F%E7%A8%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Linux下线程、进程和协程
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/09/03/WEB%E5%BC%80%E5%8F%91%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">WEB开发常见漏洞与解决方案</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
           </div>
@@ -259,9 +421,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
@@ -326,11 +488,23 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color5">系统相关</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">分布式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">中间件</a>
               </li>
             
             <div class="clearfix"></div>

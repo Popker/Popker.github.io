@@ -6,16 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2020/10 | Popker-Tech|Life</title>
+  <title>WEB开发常见漏洞与解决方案 | Popker-Tech|Life</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Popker-Tech|Life">
-<meta property="og:url" content="http://example.com/archives/2020/10/index.html">
+  <meta name="description" content="WEB开发常见漏洞与解决方案SQL注入定义：通过把SQL命令插入到Web表单提交或输入域名或页面请求的查询字符串，最终达到欺骗服务器执行恶意的SQL命令 防范：SQL注入只对SQL语句的编译过程有破坏作 用，而PreparedStatement已经准备好了，执行 阶段只是把输入串作为数据处理，而不再对语句进 行解析，因此也就避免了SQL注入问题。（在Mybatis中，#{}：相当于JDBC中">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WEB开发常见漏洞与解决方案">
+<meta property="og:url" content="http://example.com/2018/09/03/WEB%E5%BC%80%E5%8F%91%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/index.html">
 <meta property="og:site_name" content="Popker-Tech|Life">
+<meta property="og:description" content="WEB开发常见漏洞与解决方案SQL注入定义：通过把SQL命令插入到Web表单提交或输入域名或页面请求的查询字符串，最终达到欺骗服务器执行恶意的SQL命令 防范：SQL注入只对SQL语句的编译过程有破坏作 用，而PreparedStatement已经准备好了，执行 阶段只是把输入串作为数据处理，而不再对语句进 行解析，因此也就避免了SQL注入问题。（在Mybatis中，#{}：相当于JDBC中">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-09-03T02:34:40.000Z">
+<meta property="article:modified_time" content="2020-10-10T13:43:55.454Z">
 <meta property="article:author" content="Popker">
+<meta property="article:tag" content="系统相关">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Popker-Tech|Life" type="application/atom+xml">
@@ -70,9 +75,17 @@
 			
 				<li><a href="/" >主页</a></li>
 			
+				<li><a href="/tags/%E9%9A%8F%E7%AC%94/" >随笔</a></li>
+			
 				<li><a href="/tags/Java/" >Java</a></li>
 			
-				<li><a href="/tags/%E9%9A%8F%E7%AC%94/" >随笔</a></li>
+				<li><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" >数据库</a></li>
+			
+				<li><a href="/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/" >中间件</a></li>
+			
+				<li><a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/" >分布式</a></li>
+			
+				<li><a href="/tags/%E7%B3%BB%E7%BB%9F%E7%9B%B8%E5%85%B3/" >系统相关</a></li>
 			
 			</ul>
 		</nav>
@@ -128,6 +141,14 @@
 			
 				
 			
+				
+			
+				
+			
+				
+			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -140,11 +161,19 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
+					<li style="width: 14.285714285714286%"><a href="/">主页</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/tags/Java/">Java</a></li>
+					<li style="width: 14.285714285714286%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
+					<li style="width: 14.285714285714286%"><a href="/tags/Java/">Java</a></li>
+		        
+					<li style="width: 14.285714285714286%"><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li>
+		        
+					<li style="width: 14.285714285714286%"><a href="/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/">中间件</a></li>
+		        
+					<li style="width: 14.285714285714286%"><a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/">分布式</a></li>
+		        
+					<li style="width: 14.285714285714286%"><a href="/tags/%E7%B3%BB%E7%BB%9F%E7%9B%B8%E5%85%B3/">系统相关</a></li>
 		        
 				</ul>
 			</nav>
@@ -160,108 +189,205 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-WEB开发常见漏洞与解决方案" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/10/09/hello-world/" class="archive-article-date">
-        <time datetime="2020-10-09T15:26:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-09</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2020/10/09/hello-world/">hello-world</a>
-	
+    <h1 class="article-title" itemprop="name">
+      WEB开发常见漏洞与解决方案
     </h1>
   
 
 
-        <div class="article-info info-on-right">
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2018/09/03/WEB%E5%BC%80%E5%8F%91%E5%B8%B8%E8%A7%81%E6%BC%8F%E6%B4%9E%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="archive-article-date">
+        <time datetime="2018-09-03T02:34:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-03</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">1.3k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">4分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="WEB开发常见漏洞与解决方案"><a href="#WEB开发常见漏洞与解决方案" class="headerlink" title="WEB开发常见漏洞与解决方案"></a>WEB开发常见漏洞与解决方案</h1><h2 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h2><p>定义：通过把SQL命令插入到Web表单提交或输入域名或页面请求的查询字符串，最终达到欺骗服务器执行恶意的SQL命令</p>
+<p>防范：SQL注入只对SQL语句的编译过程有破坏作 用，而PreparedStatement已经准备好了，执行 阶段只是把输入串作为数据处理，而不再对语句进 行解析，因此也就避免了SQL注入问题。（在Mybatis中，#{}：相当于JDBC中的PreparedStatement，经过预编译的，是安全的。${}：是输出变量的值，是未经过预编译的，仅仅是取变量的值，是非安全的，存在SQL注入。）<a id="more"></a></p>
+<h2 id="XSS漏洞"><a href="#XSS漏洞" class="headerlink" title="XSS漏洞"></a>XSS漏洞</h2><p>定义：XSS是一种经常出现在web应用中的计算机安全漏洞，它允许恶意web用户将代码植入到提供给其它用户使用的页面中。比如这些代码包括HTML代码和客户端脚本。</p>
+<p>防范： <code>&lt;script&gt;alert()&lt;/script&gt;</code>可以执行任意脚本，可 以从输入、输出两个角度去考虑防御。</p>
+<ul>
+<li>输入不处理，输出时根据应用场景统一工具类进行转义</li>
+<li>CSP 全称为 Content Security Policy，即内容安全策略，是一种开发者定义的安全策略声明，可以阻止恶意内容在受信 web 页面上下文中的执行，减少 XSS、clickjacking、code inject 等攻击。其主要以“白名单”的形式指定可信的内容来源，或是控制一些安全相关的选项。</li>
+</ul>
+<h2 id="任意文件上传-下载"><a href="#任意文件上传-下载" class="headerlink" title="任意文件上传/下载"></a>任意文件上传/下载</h2><p>定义：</p>
+<ul>
+<li>上传：文件上传漏洞是指网络攻击者上传了一个可执行的文件到服务器并执行。这里上传的文件可以是木马，病毒，恶意脚本或者WebShell等。</li>
+<li>下载：一些网站由于业务需求，可能提供文件查看或下载的功能，如果对用户查看或下载的文件不做限制，则恶意用户就能够查看或下载任意的文件，可以是源代码文件、敏感文件等，就会造成任意文件下载漏洞。</li>
+</ul>
+<p>防范：</p>
+<ul>
+<li>上传：限制目录不可执行、上传文件类型检查、上传文件大小检查</li>
+<li>下载：禁止客户端自定义下载路径</li>
+</ul>
+<h2 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h2><p>定义：跨站请求伪造(Cross- site request forgery)，能够在用户不知情的情况下发起请求。与跨网站脚本(XSS) 相比，XSS利用的是用户对指定网站的信任， CSRF利用的是网站对用户网页浏览器的信任 。</p>
+<p>防范：</p>
+<ul>
+<li>请求带随机数：每次请求带有一次有效随机数(隐藏input)</li>
+<li>避免跨域请求：1.校验origin、referer 2.post发送Json数据</li>
+<li>浏览器的跨域策略：Double Submit Cookie</li>
+</ul>
+<h2 id="水平越权"><a href="#水平越权" class="headerlink" title="水平越权"></a>水平越权</h2><p>定义：水平权限漏洞一般出现在一个用户对象关联多个其他对象（订单、地址等）、并且要实现对关联对象的CRUD的时候。开发容易习惯性的在生成CRUD表单（或AJAX请求）的时候根据认证过的用户身份来找出其有权限的被操作对象id，提供入口，然后让用户提交请求，并根据这个id来操作相关对象。在处理CRUD请求时，往往默认只有有权限的用户才能得到入口，进而才能操作相关对象，因此就不再校验权限了。可悲剧的是大多数对象的ID都被设置为自增整型，所以攻击者只要对相关id加1、减1、直至遍历，就可以操作其他用户所关联的对象了。</p>
+<p>防范：把权限的控制转移到数据接口层中，要求web层在调用数据接口层的接口时额外提供userid，而这个userid在web层看来只能通过seesion来取到。这样在面对水平权限攻击时，web层的开发者不用额外花精力去注意鉴权的事情，也不需要增加一个SQL来专门判断权限——如果权限不对的话，那个and条件就满足不了，SQL自然就找不到相关对象去操作。而且这个方案对于一个接口多个地方使用的情况也比较有利，不需要每个地方都鉴权了。</p>
+<h2 id="cors配置不当"><a href="#cors配置不当" class="headerlink" title="cors配置不当"></a>cors配置不当</h2><p>定义：</p>
+<ol>
+<li>网站A存在cors配置不当</li>
+<li>攻击者在自己的网站B构造ajax,请求A网站的接口</li>
+<li>当用户访问B网站页面时，触发跨域</li>
+<li>请求A网站接口，返回的数据存入 攻击者网站。</li>
+</ol>
+<p>防范：例如<a target="_blank" rel="noopener" href="http://www.api.com仅允许www.example.com发起的跨域请求/">www.api.com仅允许www.example.com发起的跨域请求</a>: httpResponse.setHeader(“Access-Control-Allow-Origin”,”<a target="_blank" rel="noopener" href="http://www.example.com&quot;/">www.example.com&quot;</a>);</p>
+<h2 id="其他风险"><a href="#其他风险" class="headerlink" title="其他风险"></a>其他风险</h2><p>URL传输token：</p>
+<ol>
+<li>访问日志泄露用户认证凭证 </li>
+<li>referer泄露用户认证凭证</li>
+</ol>
+<p>日志审计:</p>
+<ol>
+<li>禁止记录：密码、CVV、有效期、session等C4类敏 感信息禁止打印日志。</li>
+<li>需要记录日志:时间、地点、人物、起因、经过、结果 时间、IP、username、url、内容、成功/失败</li>
+<li>日志管理:保存至少6个月以上、异地备份、管理员禁止删除日志</li>
+</ol>
+
+    
+
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          Popker
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="http://example.com/2018/09/03/WEB开发常见漏洞与解决方案/" title="WEB开发常见漏洞与解决方案" target="_blank">http://example.com/2018/09/03/WEB开发常见漏洞与解决方案/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">系统相关</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+    
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/10/09/test/" class="archive-article-date">
-        <time datetime="2020-10-09T15:26:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-09</time>
-</a>
 
+
+<nav id="article-nav">
+  
+    <a href="/2018/09/04/Java%E5%9F%BA%E7%A1%80-OIO%E7%9A%84%E4%BD%BF%E7%94%A8/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Java 网络编程基础（一）- IO
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/08/05/OrderBy%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8E%92%E5%BA%8F%E8%A7%84%E5%88%99%E5%92%8C%E5%9C%A8InnoDB%E4%B8%AD%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">OrderBy字符串排序规则和在InnoDB中的性能优化</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2020/10/09/test/">test</a>
-	
-    </h1>
-  
+        
+        
+    </div>
+</aside>
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
-    
+
+
+
+
+
+
+
 
 
           </div>
@@ -302,8 +428,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
@@ -369,11 +495,23 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color5">系统相关</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">分布式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">中间件</a>
               </li>
             
             <div class="clearfix"></div>
