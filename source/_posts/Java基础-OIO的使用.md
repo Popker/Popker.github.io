@@ -12,9 +12,9 @@ Java IO包主要包含了输入和输出到文件、网络流、内存缓冲区�
 
 ## Java IO类总结
 
-![Java IO类梗概](https://s1.ax1x.com/2018/09/04/iSoE7V.md.jpg)<!--more-->
+![Java IO类梗概](https://s1.ax1x.com/2018/09/04/iSoE7V.md.jpg)
 
-如上图所示，Java IO流主要分为字符流和字节流，Reader和Writer等读写是**基于字符**的，InputStream和OutputStream是**基于字节流**的。
+如上图所示，Java IO流主要分为字符流和字节流，Reader和Writer等读写是**基于字符**的，InputStream和OutputStream是**基于字节流**的。<!--more-->
 除此之外，还有一个特殊的类java.io.RandomAccessFile，RandomAccessFile 虽然属于java.io下的类，但它不是InputStream或者OutputStream的子类；它也不同于FileInputStream和FileOutputStream。 
 
 FileIsnputStream 只能对文件进行读操作，而FileOutputStream 只能对文件进行写操作；RandomAccessFile与输入流和输出流不同之处就是RandomAccessFile可以**访问文件的任意地方**同时支持文件的读和写，并且它支持**随机访问**。RandomAccessFile包含InputStream的三个read方法，也包含OutputStream的三个write方法。同时RandomAccessFile还包含一系列的readXxx和writeXxx方法完成输入输出。 
