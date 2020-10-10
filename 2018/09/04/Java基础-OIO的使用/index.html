@@ -10,16 +10,16 @@
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="Java学习（一）- IOJava IO(java.io)包的内容Java IO包主要包含了输入和输出到文件、网络流、内存缓冲区等，却不包含开启网络链接的类，但只要打开了一个网络连接，我们就可以用Java IO的InputStream和OutputStream来进行读写操作； Java IO类总结">
+  <meta name="description" content="Java学习（一）- IOJava IO(java.io)包的内容Java IO包主要包含了输入和输出到文件、网络流、内存缓冲区等，却不包含开启网络链接的类，但只要打开了一个网络连接，我们就可以用Java IO的InputStream和OutputStream来进行读写操作； Java IO类总结 如上图所示，Java IO流主要分为字符流和字节流，Reader和Writer等读写是基于字符的，I">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java 网络编程基础（一）- IO">
 <meta property="og:url" content="http://example.com/2018/09/04/Java%E5%9F%BA%E7%A1%80-OIO%E7%9A%84%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="Popker-Tech|Life">
-<meta property="og:description" content="Java学习（一）- IOJava IO(java.io)包的内容Java IO包主要包含了输入和输出到文件、网络流、内存缓冲区等，却不包含开启网络链接的类，但只要打开了一个网络连接，我们就可以用Java IO的InputStream和OutputStream来进行读写操作； Java IO类总结">
+<meta property="og:description" content="Java学习（一）- IOJava IO(java.io)包的内容Java IO包主要包含了输入和输出到文件、网络流、内存缓冲区等，却不包含开启网络链接的类，但只要打开了一个网络连接，我们就可以用Java IO的InputStream和OutputStream来进行读写操作； Java IO类总结 如上图所示，Java IO流主要分为字符流和字节流，Reader和Writer等读写是基于字符的，I">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://s1.ax1x.com/2018/09/04/iSoE7V.md.jpg">
 <meta property="article:published_time" content="2018-09-04T08:16:32.000Z">
-<meta property="article:modified_time" content="2020-10-10T13:46:00.430Z">
+<meta property="article:modified_time" content="2020-10-10T13:53:03.117Z">
 <meta property="article:author" content="Popker">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
@@ -245,8 +245,8 @@
   <div class="article-entry" itemprop="articleBody">
     
     <h1 id="Java学习（一）-IO"><a href="#Java学习（一）-IO" class="headerlink" title="Java学习（一）- IO"></a>Java学习（一）- IO</h1><h2 id="Java-IO-java-io-包的内容"><a href="#Java-IO-java-io-包的内容" class="headerlink" title="Java IO(java.io)包的内容"></a>Java IO(java.io)包的内容</h2><p>Java IO包主要包含了输入和输出到文件、网络流、内存缓冲区等，却不包含开启网络链接的类，但只要打开了一个网络连接，我们就可以用Java IO的InputStream和OutputStream来进行读写操作；</p>
-<h2 id="Java-IO类总结"><a href="#Java-IO类总结" class="headerlink" title="Java IO类总结"></a>Java IO类总结</h2><p><img src="https://s1.ax1x.com/2018/09/04/iSoE7V.md.jpg" alt="Java IO类梗概"><a id="more"></a></p>
-<p>如上图所示，Java IO流主要分为字符流和字节流，Reader和Writer等读写是<strong>基于字符</strong>的，InputStream和OutputStream是<strong>基于字节流</strong>的。<br>除此之外，还有一个特殊的类java.io.RandomAccessFile，RandomAccessFile 虽然属于java.io下的类，但它不是InputStream或者OutputStream的子类；它也不同于FileInputStream和FileOutputStream。 </p>
+<h2 id="Java-IO类总结"><a href="#Java-IO类总结" class="headerlink" title="Java IO类总结"></a>Java IO类总结</h2><p><img src="https://s1.ax1x.com/2018/09/04/iSoE7V.md.jpg" alt="Java IO类梗概"></p>
+<p>如上图所示，Java IO流主要分为字符流和字节流，Reader和Writer等读写是<strong>基于字符</strong>的，InputStream和OutputStream是<strong>基于字节流</strong>的。<a id="more"></a><br>除此之外，还有一个特殊的类java.io.RandomAccessFile，RandomAccessFile 虽然属于java.io下的类，但它不是InputStream或者OutputStream的子类；它也不同于FileInputStream和FileOutputStream。 </p>
 <p>FileIsnputStream 只能对文件进行读操作，而FileOutputStream 只能对文件进行写操作；RandomAccessFile与输入流和输出流不同之处就是RandomAccessFile可以<strong>访问文件的任意地方</strong>同时支持文件的读和写，并且它支持<strong>随机访问</strong>。RandomAccessFile包含InputStream的三个read方法，也包含OutputStream的三个write方法。同时RandomAccessFile还包含一系列的readXxx和writeXxx方法完成输入输出。 </p>
 <h2 id="Java-IO异常处理"><a href="#Java-IO异常处理" class="headerlink" title="Java IO异常处理"></a>Java IO异常处理</h2><h3 id="Java7之前的Try-Catch-Finally处理风格"><a href="#Java7之前的Try-Catch-Finally处理风格" class="headerlink" title="Java7之前的Try-Catch-Finally处理风格"></a>Java7之前的Try-Catch-Finally处理风格</h3><pre><code>private static void printFile() throws IOException &#123;
     InputStream input = null;
@@ -492,11 +492,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+                <a href="javascript:void(0)" class="js-tag color5">系统相关</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">系统相关</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">中间件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -504,7 +508,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">中间件</a>
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
             
             <div class="clearfix"></div>
@@ -556,7 +560,7 @@
     	<section class="tools-section tools-section-me" q-show="aboutme">
         
           
-  	  		<div class="aboutme-wrap" id="aboutme">主要涉及技术：<br>Java后端开发</div>
+  	  		<div class="aboutme-wrap" id="aboutme">非典型码农<br>Deadlocks are a fact of life,<br>not a bug per se.</div>
   	  	
     	</section>
     
