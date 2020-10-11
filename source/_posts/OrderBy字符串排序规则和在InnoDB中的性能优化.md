@@ -1,12 +1,10 @@
 ---
 title: OrderBy字符串排序规则和在InnoDB中的性能优化
 date: 2018-08-05 17:49:48
-tags: 数据库
+tags: MySQL
 ---
-#OrderBy字符串排序规则和在InnoDB中的性能优化
-
 ## Order by字符串排序规则
-对于字符串来讲，排序规则可以在配置文件中my.ini中指定，主要有以下几个种类的排序规则：
+对于字符串来讲，排序规则可以在配置文件中my.ini中指定，主要有以下几个种类的排序规则：<!--more-->
 （1） **utf8_general_cs** 和 **utf8_general_ci** （后缀"_cs"或者"_ci"意思是区分大小写和不区分大小写（Case Sensitive & Case Insensitve））
 （2） **utf8_bin** 规定每个字符串用二进制编码存储，区分大小写，可以直接存储二进制的内容
 默认采取的utf8_general_ci **不区分大小写**，并且是按照**逐位比较**，如果相同再比较下一位的方法；如果想按照int方法排序，可以**order by varchar+0**。<!--more-->
