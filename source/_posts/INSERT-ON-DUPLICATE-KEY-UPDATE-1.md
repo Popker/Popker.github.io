@@ -60,7 +60,7 @@ Bug链接中有MySQL开发者**Sven Sandberg**对这个问题的详细描述，�
 
 #### 2.1 问题原因
 
-在5.7.27之前（不包括5.27），INSERT...ON DUPLICATE KEY UPDATE语句在多个唯一键，在没有检查到DUPLICATE KEY的时候，没有对没找到的key加锁，使得其他事务可以影响当前事务的最终结果，最终导致事务隔离性出现了问题。2.2中会给出典型的例子。
+在5.7.27之前（不包括5.27），INSERT...ON DUPLICATE KEY UPDATE语句在多个唯一键，在没有检查到DUPLICATE KEY的时候，没有对没找到的key加锁，使得其他事务可以影响当前事务的最终结果，最终导致事务隔离性出现了问题，从而影响了MySQL的复制。2.2中会给出典型的例子。
 
 
 
@@ -179,13 +179,42 @@ TRX2先执行：
 
 为了隔离性，MySQL需要"lock everything we saw to make decision"（锁住看到的一切来做出决定）。
 
+5.7.26以后，只对发生冲突和没发生冲突的行，都会加行锁（上例中的f1=2的场景），不会添加其他锁；
 
+而在Bug修复前（5.7.4之后），
+
+有冲突时：
+
+INSERT...ON DUPLICATE KEY UPDATE会对有冲突的行加next-key lock(which just on the index record and a gap lock on the gap before the index record)，而不会对没有冲突的行加锁（发生原因）。
+
+> 有趣的是，这个时期5.7.4-5.7.25之前，即使隔离级别是RC，依然会对有冲突的行加next-key lock。和一般认知下RC没有gap锁是冲突的。
+
+而完全没有冲突时：
+
+INSERT...ON DUPLICATE KEY UPDATE会对插入行的上下gap都加锁（并发下导致死锁，见下一节）。
+
+> ```
+> Observe that on the leader the con1 made a decision that the conflict is on f2 (as opposed to f1) by first observing that there is no row with f1=2.
+> How did it observe it? By temporarily creating a record in primary index with f1=2 and seeing that it succeeded.
+> Only later, when it found a conflict on f2 and decided to remove the record.
+> By removing the record, con1 removed a part of "proof" that it saw no conflict on f1.
+> This is why con2 was able to insert a row with f1=2, which later lead to replication issues.
+> The correct way to "preserve the evidence" would be to make sure that the gap in which f1=2 was remains locked until con1 commits.
+> This can be accomplished by creating explicit lock on the temporary row, and then let it be inherited on removal.
+> Such explicit lock can be created by so called implicit-to-explicit conversion.
+> The con1 already had an implicit lock on the record, because its TRX_ID was in the row's header as the id of the trx which written it.
+> But this implicit lock will vanish as soon as we remove the record physically, so it needs to be saved as an explicit lock in memory.
+> the old code(Bug#50413 Fix) forgot to convert implicit lock on the temporarly inserted row to explicit lock, 
+> and thus it was not inherited and thus there is no gap protecting the proof that there was no conflict on primary key.
+> **This change(Bug#25966845 Fix) follows from realisation, that in case we have to remove the row we will properly inherit the lock as a gap lock, and if we don't remove it, then there is no need to protect the gap.**
+> So, this should increase parallelism. 
+> ```
 
 
 
 #### 2.4 一件有意思的事
 
-有趣的是，在BUG 50413时，MySQL开发人员已经发现INSERT...ON DUPLICATE KEY UPDATE语句存在隔离性问题。在5.7.4中还修复了一版本，在遇到duplicate key时，给**被检测到duplicate key的行**加Next Key Lock。但这明显对隔离性这个问题没有起到作用，所以才在Bug #25966845 5.7.26修复成了2.4中分析的样子。
+有趣的是，在BUG 50413时，MySQL开发人员已经发现INSERT...ON DUPLICATE KEY UPDATE语句存在隔离性问题。在5.7.4中还修复了一版本，在遇到duplicate key时，给**被检测到duplicate key的行**加Next Key Lock。但这明显对隔离性这个问题没有起到作用，所以才在Bug #25966845 5.7.26修复成了2.3中分析的样子。
 
 
 
