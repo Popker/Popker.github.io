@@ -21,8 +21,10 @@
     <!-- meta -->
 
 
-<title>Archive: 2020/10 | Popker-Tech|Life</title>
+<title>INSERT ... ON DUPLICATE KEY UPDATE(1) - 死锁问题 | Popker-Tech|Life</title>
 
+
+    <meta name="keywords" content="数据库">
 
 
 
@@ -37,6 +39,11 @@
 
 
     
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/default.css" media="none" onload="if(getComputedStyle(document.documentElement).getPropertyValue('--color-mode').indexOf('dark')===-1)this.media='all'">
+        
+    
+
     
     
 
@@ -135,100 +142,141 @@
 </header>
 
 
-    <div class="cover">
-        <div class="cover__logo">
-            
-                <h1>Popker&#39;s Blog</h1>
-            
-        </div>
-        
-        
-            <div class="cover__intro">
-                <p>Deadlocks are a fact of life and not a bug per se.</p>
- 
-            </div>
-        
-    </div>
+            <main class="main">
+    
 
-            
-<main class='main'>
-    
-		
-    <div class="post-list">
-        
-            
-                <div class='post-entry content-card'>
-                    <div class="post-entry__header">
-    
-        <div class="post-thumbnail" style="background-image: url('https://s1.ax1x.com/2020/10/15/0IzOwq.jpg');"></div>
-    
-</div>
-<div class="post-entry__content">
-    <h2 class="post-entry__title">
+<div class="post-title">
+    <h1 class="post-title__text">
         INSERT ... ON DUPLICATE KEY UPDATE(1) - 死锁问题
-    </h2>
-    
-        <p>
-            5.7.26以前遇到的死锁原始表格和上一节相同
-123
-        </p>
-    
-</div>
-<div class="post-entry__meta">
-    <a href="/archives/2020/10/" class="post-meta__date button">
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2020/10/" class="post-meta__date button">
     2020-10-25
 </a>
-    
+        
  
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
 </div>
-<div class="post-entry__tags">
-    
-        <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-tags__link button"># 数据库</a>
-    
-</div> 
-<a href="/2020/10/25/INSERT%20...%20ON%20DUPLICATE%20KEY%20UPDATE(1)%20-%20%E5%AE%9E%E9%99%85%E9%97%AE%E9%A2%98/" class="post-entry__link">Link</a>
-                </div>
-            
-                <div class='post-entry content-card'>
-                    <div class="post-entry__header">
+
+
+
+<article class="post content-card">
+    <div class="post__header">
     
         <div class="post-thumbnail" style="background-image: url('https://s1.ax1x.com/2020/10/15/0IzOwq.jpg');"></div>
     
 </div>
-<div class="post-entry__content">
-    <h2 class="post-entry__title">
-        INSERT ... ON DUPLICATE KEY UPDATE(1) - 原罪
-    </h2>
-    
-        <p>
-            
-INSERT…ON DUPLICATE KEY UPDATE is a problematic construct. - Marko Mäkelä
+    <div class="post__content">
+        <h3 id="5-7-26以前遇到的死锁"><a href="#5-7-26以前遇到的死锁" class="headerlink" title="5.7.26以前遇到的死锁"></a>5.7.26以前遇到的死锁</h3><p>原始表格和上一节相同</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> t1(</span><br><span class="line">  f1 <span class="built_in">int</span> auto_increment primary <span class="keyword">key</span>,</span><br><span class="line">  f2 <span class="built_in">int</span> <span class="keyword">unique</span> <span class="keyword">key</span>,</span><br><span class="line">  f3 <span class="built_in">int</span></span><br><span class="line">);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> t1(f1,f2,f3) <span class="keyword">values</span> (<span class="number">1</span>, <span class="number">10</span>, <span class="number">100</span>);</span><br></pre></td></tr></table></figure>
 
+<table>
+<thead>
+<tr>
+<th>Transaction1</th>
+<th>Transaction2</th>
+<th>Transaction3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>insert into t1 values(2, 20, 200) on duplicate key update f3 = 120;</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>insert into t1 values(3, 30, 200) on duplicate key update f3 = 120;</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>阻塞</td>
+<td>insert into t1 values(4, 40, 200) on duplicate key update f3 = 120;</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>阻塞</td>
+</tr>
+<tr>
+<td>commit；</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>死锁</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>分析：</p>
+<p>Transaction2/Transaction3的insert intention锁被Transaction1的GAP锁阻塞；Transaction1提交后，Transaction2和Transaction3同时获得gap锁，想加insert intention与gap锁冲突，导致相互等待。</p>
 
-        </p>
+    </div>
+     
+    <div class="post-footer__meta">
+    <p>
+        updated at 2020-10-26
+    </p>
+</div> 
+    <div class="post-meta__cats">
     
-</div>
-<div class="post-entry__meta">
-    <a href="/archives/2020/10/" class="post-meta__date button">
-    2020-10-11
-</a>
-    
- 
-</div>
-<div class="post-entry__tags">
     
         <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-tags__link button"># 数据库</a>
     
 </div> 
-<a href="/2020/10/11/INSERT-ON-DUPLICATE-KEY-UPDATE-1/" class="post-entry__link">Link</a>
-                </div>
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
             
-        
+                <a href="/2020/12/01/INNODB%E7%9A%84RR%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB%E7%BB%88%E7%A9%B6%E8%A7%A3%E5%86%B3%E4%BA%86%E4%BB%80%E4%B9%88%EF%BC%9F/" class="nav__link">
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
+                    </div>
+                    <div>
+                        <div class="nav__label">
+                            Previous Post
+                        </div>
+                        <div class="nav__title">
+                            INNODB的RR隔离级别终究解决了什么？
+                        </div>
+                    </div>
+                </a>
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/2020/10/11/INSERT-ON-DUPLICATE-KEY-UPDATE-1/" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            Next Post
+                        </div>
+                        <div class="nav__title">
+                            INSERT ... ON DUPLICATE KEY UPDATE(1) - 原罪
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
     </div>
-    
 
 
-	
+
+
+
 </main>
 
             <footer class="footer">
